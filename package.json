@@ -4,7 +4,7 @@
   "description": "A npm module for blocking spam",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/gideonbot/request-controller/issues"
   },
-  "homepage": "https://github.com/gideonbot/request-controller#readme"
+  "homepage": "https://github.com/gideonbot/request-controller#readme",
+  "dependencies": {
+    "@types/node": "^14.0.14"
+  }
 }
