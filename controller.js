@@ -2,7 +2,6 @@ const { EventEmitter } = require('events');
 const fs = require('fs');
 const path = require('path');
 const Util = require('./Util');
-const { kMaxLength } = require('buffer');
 
 class Controller extends EventEmitter {
     constructor(options) {
@@ -78,8 +77,8 @@ class Controller extends EventEmitter {
             if (this.settings.whitelisted_ips.includes(IP)) return next();
 
             if (this.banned_ips.includes(IP)) {
-                this.emit('request_denied', IP);
-                
+                this.emit('request_denied', req);
+
                 if (this.settings.should_respond) {
                     res.status(403).send(this.settings.response);
                 }
@@ -126,6 +125,18 @@ class Controller extends EventEmitter {
 
     get middleware() {
         return this._middleware;
+    }
+
+    ban(ip) {
+        if (!ip) return;
+        //validation here
+        return this._ban(ip);
+    }
+    
+    unban(ip) {
+        if (!ip) return;
+        //validation here
+        return this._unban(ip);
     }
 }
 
