@@ -59,16 +59,6 @@ class Controller extends EventEmitter {
             }
         }
 
-        setInterval(() => {
-            for (let ip in this.request_count) {
-                if (this.request_count[ip] >= this.settings.max_requests) {
-                    this._ban(ip);   
-                }
-            }
-        
-            this.request_count = {};
-        }, this.settings.time_window * 1000);
-
         this._middleware = (req, res, next) => {
             const IP = Util.IPFromRequest(req);
 
@@ -121,7 +111,19 @@ class Controller extends EventEmitter {
             fs.writeFileSync(this.settings.file_path, this.banned_ips.join('\n'));
         };
 
+        this._check = () => {
+            for (let ip in this.request_count) {
+                if (this.request_count[ip] >= this.settings.max_requests) {
+                    this._ban(ip);   
+                }
+            }
+        
+            this.request_count = {};
+        };
+
         this._load();
+
+        setInterval(() => this._check(), this.settings.time_window * 1000);
     }
 
     get middleware() {

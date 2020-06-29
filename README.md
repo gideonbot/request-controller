@@ -37,9 +37,11 @@ The middleware you use in `app.use`
 
 ### .ban(ip: string)
 Adds the IP to the list of banned IPs
+Return value is boolean - true if successful otherwise false
 
 ### .unban(ip: string)
 Removes the IP from the list of banned IPs
+Return value is boolean - true if successful otherwise false
 
 ### .load()
 Loads the ban list from ipbans.txt (you shouldn't have to call this)
@@ -58,6 +60,8 @@ Occurs when a banned IP attempts to make a request, first argument is the reques
 - Configurable automatic IP bans
 - Configurable response for banned IPs
 - Events for IP banning/unbanning
+- Can be used with [express-rate-limit](https://www.npmjs.com/package/express-rate-limit) to
+  automatically ban IPs after certain amount of 429s
 
 ## Bug/Todo list
 - proper response handling
