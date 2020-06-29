@@ -21,9 +21,9 @@ interface Options {
 }
 
 interface _Response {
-    code: number;
-    ctype: string;
-    body: string;
+    code?: number;
+    ctype?: string;
+    body?: string;
 }
 
 interface Events {
