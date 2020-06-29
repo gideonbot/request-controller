@@ -62,11 +62,10 @@ Occurs when a banned IP attempts to make a request, first argument is the reques
 - Configurable automatic IP bans
 - Configurable response for banned IPs
 - Events for IP banning/unbanning
-- Can be used with [express-rate-limit](https://www.npmjs.com/package/express-rate-limit) to
-  automatically ban IPs after certain amount of 429s
+- Can be used with [express-rate-limit](https://www.npmjs.com/package/express-rate-limit) to automatically ban IPs after certain amount of 429s
 
 ## Bug/Todo list
-- proper response handling
+none (afaik)
 
 ## Changelog
 - 29.06.2020 - Init
