@@ -8,6 +8,8 @@ export class Controller extends EventEmitter {
     ban(ip: string): boolean;
     unban(ip: string): boolean;
     load(): void;
+    public on<K extends keyof ClientEvents>(event: K, listener: (...args: ClientEvents[K]) => void): this;
+    public once<K extends keyof ClientEvents>(event: K, listener: (...args: ClientEvents[K]) => void): this;
 }
 
 interface Options {
@@ -22,4 +24,10 @@ interface _Response {
     code: number;
     ctype: string;
     body: string;
+}
+
+interface ClientEvents {
+    request_denied: [Request];
+    ip_banned: [string];
+    ip_unbanned: [string];
 }
