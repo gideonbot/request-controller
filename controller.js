@@ -59,8 +59,6 @@ class Controller extends EventEmitter {
             }
         }
 
-        this._load();
-
         setInterval(() => {
             for (let ip in this.request_count) {
                 if (this.request_count[ip] >= this.settings.max_requests) {
@@ -122,6 +120,8 @@ class Controller extends EventEmitter {
         this._save = () => {
             fs.writeFileSync(this.settings.file_path, this.banned_ips.join('\n'));
         };
+
+        this._load();
     }
 
     get middleware() {
