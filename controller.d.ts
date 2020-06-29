@@ -4,7 +4,10 @@ import Util = require("./Util");
 
 export class Controller extends EventEmitter {
     constructor(options: Options);
-
+    middleware: (req: Request, res: Response, next: () => {}) => void;
+    ban(ip: string): boolean;
+    unban(ip: string): boolean;
+    load(): void;
 }
 
 interface Options {
@@ -13,10 +16,6 @@ interface Options {
     ban_threshold_time: number;
     whitelisted_ips?: string[];
     response?: _Response;
-    middleware: (req: Request, res: Response, next: () => {}) => void;
-    ban(ip: string): boolean;
-    unban(ip: string): boolean;
-    load(): void;
 }
 
 interface _Response {

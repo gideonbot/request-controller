@@ -1,4 +1,4 @@
 module.exports = {
     Util: require('./Util').default,
-    controller: require('./controller')
+    Controller: require('./controller')
 };
