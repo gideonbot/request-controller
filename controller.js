@@ -54,8 +54,8 @@ class Controller extends EventEmitter {
                 body: options.response.body && typeof(options.response.body) == 'string' ? options.response.body : 'You are banned from accessing this server',
             };
 
-            if (fs.existsSync(this.settings.options.body)) {
-                this.settings.options.body = fs.readFileSync(this.settings.options.body).toString();
+            if (fs.existsSync(this.settings.response.body)) {
+                this.settings.response.body = fs.readFileSync(this.settings.response.body).toString();
             }
         }
 

@@ -15,8 +15,8 @@ let my_controller = new controller({
     whitelisted_ips: ['64.233.160.25'], //list of ips that cannot get banned
     response: { //response that is sent to banned IPs, if undefined the request will just time out
         code: 403, //status code for response [default 403]
-        ctype: '', //content type for response [default text/plain]
-        body: '' //body for response [default 'You are banned from accessing this server'] (can be a path to a file)
+        ctype: 'text/plain', //content type for response [default text/plain]
+        body: 'Stop spamming my site' //body for response [default 'You are banned from accessing this server'] (can be a path to a file)
     }
 });
 
