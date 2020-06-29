@@ -43,21 +43,21 @@ class Controller extends EventEmitter {
         }
         else this.settings.whitelisted_ips = [];
 
-        if ('respond_to_banned_ips' in options) {
-            if (typeof(options.respond_to_banned_ips) == 'boolean') {
-                this.settings.should_respond = options.respond_to_banned_ips;
+        if ('response' in options) {
+            if (!Util.IsObject(options.response)) {
+                throw new Error('Invalid respond_to_banned_ips');
             }
-            else throw new Error('Invalid respond_to_banned_ips');
-        }
-        else this.settings.should_respond = true;
+            
+            this.settings.response = {
+                code: options.response.code && typeof(options.response.code) == 'number' ? options.response.code : 403,
+                ctype: options.response.ctype && typeof(options.response.ctype) == 'string' ? options.response.ctype : 'text/plain',
+                body: options.response.body && typeof(options.response.body) == 'string' ? options.response.body : 'You are banned from accessing this server',
+            };
 
-        if ('banned_ip_response' in options) {
-            if (typeof(options.banned_ip_response) == 'string') {
-                this.settings.response = fs.existsSync(options.banned_ip_response) ? fs.readFileSync(options.banned_ip_response).toString() : options.banned_ip_response;
+            if (fs.existsSync(this.settings.options.body)) {
+                this.settings.options.body = fs.readFileSync(this.settings.options.body).toString();
             }
-            else throw new Error('Invalid banned_ip_response');
         }
-        else this.settings.response = 'You are banned from accessing this server';
 
         this._load();
 
@@ -79,8 +79,9 @@ class Controller extends EventEmitter {
             if (this.banned_ips.includes(IP)) {
                 this.emit('request_denied', req);
 
-                if (this.settings.should_respond) {
-                    res.status(403).send(this.settings.response);
+                if (this.settings.response) {
+                    res.setHeader('Content-Type', this.settings.response.ctype);
+                    res.status(this.settings.response.code).send(this.settings.response.body);
                 }
                 return;
             }

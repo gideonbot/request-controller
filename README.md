@@ -13,8 +13,11 @@ let my_controller = new controller({
     ban_threshold_count: 20, //how much requests does it take to get banned [default 30]
     ban_threshold_time: 5, //how often the request count is measured (aka doing more than 20 requests/5 seconds will get you banned) [default 10]
     whitelisted_ips: ['64.233.160.25'], //list of ips that cannot get banned
-    respond_to_banned_ips: true, //if false the request will just time out, otherwise 'banned_ip_response' is sent [default true]
-    banned_ip_response: 'Bad! Stop spamming!' // [default 'You are banned from accessing this server'] *can also be a path to a file*
+    response: { //response that is sent to banned IPs, if undefined the request will just time out
+        code: 403, //status code for response [default 403]
+        ctype: '', //content type for response [default text/plain]
+        body: '' //body for response [default 'You are banned from accessing this server'] (can be a path to a file)
+    }
 });
 
 app.use(my_controller.middleware);

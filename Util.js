@@ -30,9 +30,14 @@ class Util {
      */
     static IsIPAddress(str) {
         if (typeof(str) != 'string') return false;
-        
+
         for (let item of str.split(':')) if (validator.isIP(item, '4')) return true;
         return validator.isIP(str, '4');
+    }
+
+    static IsObject(o) {
+        if (Array.isArray(o)) return false;
+        return o === Object(o);
     }
 }
 
