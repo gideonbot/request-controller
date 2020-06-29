@@ -136,6 +136,10 @@ class Controller extends EventEmitter {
         if (!ip || !Util.IsIPAddress(ip)) return;
         return this._unban(ip);
     }
+
+    load() {
+        this._load();
+    }
 }
 
 module.exports = Controller;
