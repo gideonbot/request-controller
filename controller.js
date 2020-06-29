@@ -128,14 +128,12 @@ class Controller extends EventEmitter {
     }
 
     ban(ip) {
-        if (!ip) return;
-        //validation here
+        if (!ip || !Util.IsIPAddress(ip)) return;
         return this._ban(ip);
     }
     
     unban(ip) {
-        if (!ip) return;
-        //validation here
+        if (!ip || !Util.IsIPAddress(ip)) return;
         return this._unban(ip);
     }
 }
