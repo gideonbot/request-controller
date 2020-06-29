@@ -39,7 +39,7 @@ Adds the IP to the list of banned IPs
 Removes the IP from the list of banned IPs
 
 ### .load()
-Loads the ban list from ipbans.txt
+Loads the ban list from ipbans.txt (you shouldn't have to call this)
 
 ## Events
 ### .on('ip_banned', ip => {...})
@@ -48,7 +48,7 @@ Occurs when an IP gets banned, first argument is the IP that was banned
 ### .on('ip_unbanned', ip => {...})
 Occurs when an IP gets unbanned, first argument is the IP that was unbanned
 
-### .on('request_denied, req => {...})
+### .on('request_denied', req => {...})
 Occurs when a banned IP attempts to make a request, first argument is the request object received from Express
 
 ## Feature list
@@ -60,4 +60,4 @@ Occurs when a banned IP attempts to make a request, first argument is the reques
 - proper response handling
 
 ## Changelog
-29.06.2020 - Init
+- 29.06.2020 - Init
