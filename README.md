@@ -37,10 +37,12 @@ The middleware you use in `app.use`
 
 ### .ban(ip: string)
 Adds the IP to the list of banned IPs
+
 Return value is boolean - true if successful otherwise false
 
 ### .unban(ip: string)
 Removes the IP from the list of banned IPs
+
 Return value is boolean - true if successful otherwise false
 
 ### .load()
