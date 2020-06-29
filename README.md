@@ -7,8 +7,8 @@ A npm module for blocking spam
 
 ## Usage
 ```js
-const { controller } = require('request-controller');
-let my_controller = new controller({
+const { Controller } = require('request-controller');
+let my_controller = new Controller({
     file_path: __dirname, //dir in which the list of banned ips will be stored [default is where the main .js is stored]
     ban_threshold_count: 20, //how much requests does it take to get banned [default 30]
     ban_threshold_time: 5, //how often the request count is measured (aka doing more than 20 requests/5 seconds will get you banned) [default 10]

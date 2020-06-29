@@ -1,15 +1,15 @@
 import { EventEmitter } from "events";
-import { ClientRequest, IncomingMessage } from "http";
-import Util = require("./Util");
 
 export class Controller extends EventEmitter {
     constructor(options: Options);
+    
     middleware: (req: Request, res: Response, next: () => {}) => void;
     ban(ip: string): boolean;
     unban(ip: string): boolean;
     load(): void;
-    public on<K extends keyof ClientEvents>(event: K, listener: (...args: ClientEvents[K]) => void): this;
-    public once<K extends keyof ClientEvents>(event: K, listener: (...args: ClientEvents[K]) => void): this;
+
+    public on<K extends keyof Events>(event: K, listener: (...args: Events[K]) => void): this;
+    public once<K extends keyof Events>(event: K, listener: (...args: Events[K]) => void): this;
 }
 
 interface Options {
@@ -26,7 +26,7 @@ interface _Response {
     body: string;
 }
 
-interface ClientEvents {
+interface Events {
     request_denied: [Request];
     ip_banned: [string];
     ip_unbanned: [string];

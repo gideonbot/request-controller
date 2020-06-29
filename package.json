@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/gideonbot/request-controller#readme",
   "dependencies": {
-    "@types/node": "^14.0.14",
     "validator": "^13.1.1"
   }
 }
