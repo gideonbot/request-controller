@@ -28,29 +28,28 @@ my_controller.ban('64.233.160.21');
 ```
 
 ## API
-###.middleware
+
+## .middleware
 The middleware you use in `app.use`
 
-###.ban(ip: string)
+## .ban(ip: string)
 Adds the IP to the list of banned IPs
 
-###.unban(ip: string)
+## .unban(ip: string)
 Removes the IP from the list of banned IPs
 
-###.load()
+## .load()
 Loads the ban list from ipbans.txt
 
-##Events
-###.on('ip_banned', ip => {...})
+## Events
+## .on('ip_banned', ip => {...})
 Occurs when an IP gets banned, first argument is the IP that was banned
 
-###.on('ip_unbanned', ip => {...})
+## .on('ip_unbanned', ip => {...})
 Occurs when an IP gets unbanned, first argument is the IP that was unbanned
 
-###.on('request_denied, req => {...})
+## .on('request_denied, req => {...})
 Occurs when a banned IP attempts to make a request, first argument is the request object received from Express
-
-###.
 
 ## Feature list
 - Configurable automatic IP bans
