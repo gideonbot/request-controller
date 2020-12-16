@@ -1,5 +1,5 @@
 # request-controller
-A npm module for blocking spam
+An npm module for blocking spam
 
 
 ## Installation
